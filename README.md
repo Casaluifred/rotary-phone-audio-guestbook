@@ -1,4 +1,4 @@
-# Rotary Phone Audio Guestbook
+# Wählscheibentelefon Audio Gästebuch
 
 Dieses Projekt verwandelt ein Wählscheibentelefon in einen Sprachrekorder für besondere Anlässe, beispielsweise ein Audio-Gästebuch für Hochzeiten.
 
@@ -16,7 +16,7 @@ Dieses Projekt verwandelt ein Wählscheibentelefon in einen Sprachrekorder für 
   - [Support](#support)
   - [Star History](#star-history)
 
-## Background
+## Hintergrund
 
 Inspiriert von der bevorstehenden Hochzeit von Freunden wollte ich mit Hilfe eines Wählscheibentelefons ein selbstgemachtes Audio-Gästebuch bauen. 
 Eine gewerbliche Lösung stand nie zur Debatte, ich mag das gern selber zusammen bauen.
