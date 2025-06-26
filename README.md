@@ -37,46 +37,46 @@ Ich habe bewusst auf Deutsch dokumentiert, um auch die abzuholen, die mit Eingli
 
 1. Im Abschnitt [Hardware](docs/hardware.md) findest Du detaillierte Anweisungen zum Anschluss des Wählscheibentelefons an den Raspberry Pi.
 
-_Note: This is a crucial first step before proceeding to software installation._
+_Note: Dies ist ein wichtiger erster Schritt, bevor Du mit der Softwareinstallation fortfahren kannst._
 
-### Download and Install the Custom Image
+### Herunterladen und Installieren des spezifischen Raspberry-Images 
 
-With your hardware prepared, install the custom Raspberry Pi image that contains all necessary software:
+Wenn die Hardware vorbereitet ist, installiere das benutzerdefinierte Raspberry Pi-Image, das die gesamte erforderliche Software enthält:
 
-1. Download the [latest release](https://github.com/nickpourazima/rotary-phone-audio-guestbook/releases)
-2. Extract the .gz file: `gunzip rpizero_rotary_phone_audio_guestbook_v<latest>_imagebackup.img.gz`
-3. Flash the image to an SD card using Raspberry Pi Imager or BalenaEtcher:
+1. Download [latest release](https://github.com/nickpourazima/rotary-phone-audio-guestbook/releases)
+2. Entpacke das .gz file: `gunzip rpizero_rotary_phone_audio_guestbook_v<latest>_imagebackup.img.gz`
+3. Flashe das image auf eine SD-Karte (z.B. mnit dem 'Raspberry Pi Imager' oder 'BalenaEtcher':
 
    <img src="images/rpi_imager_custom.png" width="50%" height="50%">
 
-4. Configure the following credentials when prompted:
+4. Trage die folgenden Anmeldeinformationen ein, wenn die Aufforderung kommt:
    ```bash
    username: admin
    password: password
    ```
-5. Set up your WiFi network connection
-6. Insert the SD card into your Raspberry Pi and power it on
+5. Richte Die WLAN-Netzwerkverbindung ein
+6. Stecke die SD-Karte in den Raspberry Pi und verninde ihn mit der Spannungsversorgung.
 
-### Initial Configuration
+### Erstkonfiguration
 
-Once you've completed the hardware setup and installed the image:
+Sobald die Hardware-Einrichtung abgeschlossen und das Image installiert ist:
 
-1. Boot up your Raspberry Pi and allow it a minute to initialize
-2. Navigate to `<RPI_IP>:8080` in a web browser to access the control interface:
+1. Starte den Raspberry Pi und warte eine Minute, bis er initialisiert ist.
+2. Gebe die Ip-Adresse des Raspi gefolgt vom POrt 8000 `<RPI_IP>:8080` in der Adresszeile Deines Browsers ein, um auf das Webinterface zu gelangen:
 
    ![image](images/webserver_home_light_no_recordings.png)
 
-3. Visit the Settings page to customize your configuration:
+3. Klicke auf die Seite „Einstellungen“, um die Konfiguration anzupassen:
 
    ![image](images/webserver_settings_light.png)
 
-Your audio guest book is now ready for test/deployment! For advanced configuration options and detailed explanations of all settings, refer to the [Configuration](docs/configuration.md) documentation.
+Das Audio-Gästebuch ist nun bereit zum Testen/Einsatz! Erweiterte Konfigurationsmöglichkeiten und detaillierte Erklärungen aller Einstellungen findest Du in der [Configuration](docs/configuration.md) Dokumentation.
 
 ## [Software](docs/software.md)
 
-## [Development](docs/development.md)
+## [Entwicklung](docs/development.md)
 
-## Support
+## Unterstützung
 
 It's great to see this project growing. Special thanks to @svartis, @jmdevita, and @Mevel!
 
