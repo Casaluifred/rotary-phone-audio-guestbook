@@ -1,6 +1,6 @@
 # Rotary Phone Audio Guestbook
 
-This project transforms a rotary phone into a voice recorder for special events such as a wedding audio guestbook.
+Dieses Projekt verwandelt ein Wählscheibentelefon in einen Sprachrekorder für besondere Anlässe, beispielsweise ein Audio-Gästebuch für Hochzeiten.
 
 ![image](images/final_result_2.jpg)
 
@@ -18,7 +18,16 @@ This project transforms a rotary phone into a voice recorder for special events 
 
 ## Background
 
-Inspired by my upcoming wedding, I created a DIY audio guestbook using a rotary phone. After finding that commercial rentals charged high fees without offering custom voicemail options, I developed this affordable and customizable solution. This guide will help you create your own audio guestbook.
+Inspiriert von der bevorstehenden Hochzeit von Freunden wollte ich mit Hilfe eines Wählscheibentelefons ein selbstgemachtes Audio-Gästebuch bauen. 
+Eine gewerbliche Lösung stand nie zur Debatte, ich mag das gern selber zusammen bauen.
+Gefunden habe ich dann letztendlich eine Lösung von playfultechnology auf Basis des Teensy +.
+Die Hardware war schnell fertig, bei der Software  musste ich viel probieren, bis es endlich funktioniert hat.
+Während das Ganze beim ersten Einsatz problemlos funktioniert hat, habe ich es nich für eine weitere Hochzeit zur Verfügung gestellt.
+Hier gab es dann immer wieder Probleme mit dem Abspielen der Ansagen und dem Aufzeichnen der Gästenachrichten.
+
+Eigentlich dachte ich, ich versuche es komplett selber zu entwickeln, dann fand ich die Lösung von nickpourazima.
+Nachdem mir der Raspberry besser liegt als der Arduino habe ich seine Lösung als Basis genommen und auf meine eigenen Anforderungen umgebaut.
+Ich habe bewusst auf Deutsch dokumentiert, um auch die abzuholen, die mit Einglisch nicht so gut zurecht kommen.
 
 ## [Materials](docs/materials.md)
 
