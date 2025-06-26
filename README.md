@@ -29,13 +29,13 @@ Eigentlich dachte ich, ich versuche es komplett selber zu entwickeln, dann fand 
 Nachdem mir der Raspberry besser liegt als der Arduino habe ich seine Lösung als Basis genommen und auf meine eigenen Anforderungen umgebaut.
 Ich habe bewusst auf Deutsch dokumentiert, um auch die abzuholen, die mit Einglisch nicht so gut zurecht kommen.
 
-## [Materials](docs/materials.md)
+## [Material](docs/materials.md)
 
-## Setup
+## Einrichtung
 
-### Prepare Your Rotary Phone
+### Telefon vorbereitetn
 
-1. Follow the [Hardware](docs/hardware.md) section for detailed instructions on wiring your rotary phone to the Raspberry Pi.
+1. Im Abschnitt [Hardware](docs/hardware.md) findest Du detaillierte Anweisungen zum Anschluss des Wählscheibentelefons an den Raspberry Pi.
 
 _Note: This is a crucial first step before proceeding to software installation._
 
