@@ -62,7 +62,7 @@ Wenn die Hardware vorbereitet ist, installiere das benutzerdefinierte Raspberry 
 Sobald die Hardware-Einrichtung abgeschlossen und das Image installiert ist:
 
 1. Starte den Raspberry Pi und warte eine Minute, bis er initialisiert ist.
-2. Gebe die Ip-Adresse des Raspi gefolgt vom POrt 8000 `<RPI_IP>:8080` in der Adresszeile Deines Browsers ein, um auf das Webinterface zu gelangen:
+2. Gebe die Ip-Adresse des Raspi gefolgt vom Port 8000 `<RPI_IP>:8080` in der Adresszeile Deines Browsers ein, um auf das Webinterface zu gelangen:
 
    ![image](images/webserver_home_light_no_recordings.png)
 
