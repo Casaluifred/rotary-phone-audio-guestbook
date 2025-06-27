@@ -80,7 +80,7 @@ Der Pi versucht dann, sich der Reihe nach mit den angegebenen Netzwerken zu verb
 Hier ist eine detaillierte Anleitung:
 
 1. Zugriff auf die Konfigurationsdatei:
-Öffne die Datei wpa_supplicant.conf mit einem Texteditor, z.B. sudo nano /etc/wpa_supplicant/wpa_supplicant.conf.
+Öffne die Datei wpa_supplicant.conf mit einem Texteditor, z.B. ```bash sudo nano /etc/wpa_supplicant/wpa_supplicant.conf.```
 
 2. Konfiguration der Netzwerke:
 Fügen Sie für jedes Netzwerk, mit dem sich der Pi verbinden soll, einen Block mit den folgenden Informationen hinzu:
