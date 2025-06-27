@@ -11,7 +11,7 @@ Dieses Projekt verwandelt ein Wählscheibentelefon in einen Sprachrekorder für 
     - [Prepare Your Rotary Phone](#prepare-your-rotary-phone)
     - [Download and Install the Custom Image](#download-and-install-the-custom-image)
     - [Ersteinrichtung](#ersteinrichtung)
-    - [bei mehreren SSID anmelden](#bei-mehreren-SSID-anmelden)
+    - [Bei mehreren SSID anmelden](#bei-mehreren-SSID-anmelden)
   - [Software](#software)
   - [Development](#development)
   - [Support](#support)
@@ -72,6 +72,22 @@ Sobald die Hardware-Einrichtung abgeschlossen und das Image installiert ist:
    ![image](images/webserver_settings_light.png)
 
 Das Audio-Gästebuch ist nun bereit zum Testen/Einsatz! Erweiterte Konfigurationsmöglichkeiten und detaillierte Erklärungen aller Einstellungen findest Du in der [Configuration](docs/configuration.md) Dokumentation.
+
+### Bei mehreren SSID anmelden
+Da ich mehrere Netzwerke betreibe, möchte ich mich auch an mehreren WLAN anmelden können. Zum Beispiel zu Hause oder (auf der Hochzeit) über den mitgeführten Hotspot.
+Um einen Raspberry Pi Zero W automatisch mit mehreren SSIDs zu verbinden, kann man die Datei /etc/wpa_supplicant/wpa_supplicant.conf bearbeiten und mehrere Netzwerke in der Konfiguration definieren. 
+Der Pi versucht dann, sich der Reihe nach mit den angegebenen Netzwerken zu verbinden, bis eine erfolgreiche Verbindung hergestellt ist.
+Hier ist eine detaillierte Anleitung:
+
+1. Zugriff auf die Konfigurationsdatei:
+Öffne die Datei wpa_supplicant.conf mit einem Texteditor, z.B. sudo nano /etc/wpa_supplicant/wpa_supplicant.conf.
+
+2. Konfiguration der Netzwerke:
+Fügen Sie für jedes Netzwerk, mit dem sich der Pi verbinden soll, einen Block mit den folgenden Informationen hinzu:
+   ```bash
+   username: admin
+   password: password
+   ```
 
 ## [Software](docs/software.md)
 
