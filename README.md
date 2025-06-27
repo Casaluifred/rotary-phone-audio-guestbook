@@ -43,7 +43,7 @@ _Note: Dies ist ein wichtiger erster Schritt, bevor Du mit der Softwareinstallat
 
 Wenn die Hardware vorbereitet ist, installiere das benutzerdefinierte Raspberry Pi-Image, das die gesamte erforderliche Software enthält:
 
-1. Lade die [aktuellste Version] herunter (https://github.com/nickpourazima/rotary-phone-audio-guestbook/releases)
+1. Lade die aktuellste Version herunter (https://github.com/nickpourazima/rotary-phone-audio-guestbook/releases)
 2. Entpacke das .gz file: `gunzip rpizero_rotary_phone_audio_guestbook_v<latest>_imagebackup.img.gz`
 3. Flashe das image auf eine SD-Karte (z.B. mnit dem 'Raspberry Pi Imager' oder 'BalenaEtcher':
 
