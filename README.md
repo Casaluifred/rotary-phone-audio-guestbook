@@ -56,14 +56,14 @@ Wenn die Hardware vorbereitet ist, installiere das benutzerdefinierte Raspberry 
    password: password
    ```
 5. Richte Die WLAN-Netzwerkverbindung ein
-6. Stecke die SD-Karte in den Raspberry Pi und verninde ihn mit der Spannungsversorgung.
+6. Stecke die SD-Karte in den Raspberry Pi und verbinde ihn mit der Spannungsversorgung.
 
 ### Ersteinrichtung
 
 Sobald die Hardware-Einrichtung abgeschlossen und das Image installiert ist:
 
-1. Starte den Raspberry Pi und warte eine Minute, bis er initialisiert ist.
-2. Gebe die Ip-Adresse des Raspi gefolgt vom Port 8000 `<RPI_IP>:8080` in der Adresszeile Deines Browsers ein, um auf das Webinterface zu gelangen:
+1. Starte den Raspberry Pi und warte eine Minute, bis er hochgefahren ist.
+2. Gebe die IP-Adresse des Raspi gefolgt vom Port 8080 `<RPI_IP>:8080` in der Adresszeile Deines Browsers ein, um auf das Webinterface zu gelangen:
 
    ![image](images/webserver_home_light_no_recordings.png)
 
@@ -71,7 +71,7 @@ Sobald die Hardware-Einrichtung abgeschlossen und das Image installiert ist:
 
    ![image](images/webserver_settings_light.png)
 
-Das Audio-Gästebuch ist nun bereit zum Testen/Einsatz! Erweiterte Konfigurationsmöglichkeiten und detaillierte Erklärungen aller Einstellungen findest Du in der [Configuration](docs/configuration.md) Dokumentation.
+Das Audio-Gästebuch ist nun bereit zum Testen/Einsatz! Erweiterte Konfigurationsmöglichkeiten und detaillierte Erklärungen aller Einstellungen findest Du in der [Konfiguration](docs/konfiguration.md) Dokumentation.
 
 ### Bei mehreren SSID anmelden
 Da ich mehrere Netzwerke betreibe, möchte ich mich auch an mehreren WLAN anmelden können. Zum Beispiel zu Hause oder (auf der Hochzeit) über den mitgeführten Hotspot.
@@ -108,7 +108,7 @@ Speichere die Änderungen und schließe den Editor.
 
 Neustart oder Netzwerk neustarten:
 
-Starte den Raspberry Pi neu, oder führe den Befehl sudo systemctl daemon-reload gefolgt von sudo systemctl restart wpa_supplicant aus, um die Änderungen zu aktivieren. 
+Starte den Raspberry Pi neu, oder führe den Befehl 'sudo systemctl daemon-reload' gefolgt von 'sudo systemctl restart wpa_supplicant' aus, um die Änderungen zu aktivieren. 
 Nun versucht der Raspberry Pi, sich automatisch mit den konfigurierten Netzwerken zu verbinden, beginnend mit dem ersten Netzwerk in der Liste.
 Wenn die Verbindung fehlschlägt, versucht er das nächste Netzwerk usw.
 
