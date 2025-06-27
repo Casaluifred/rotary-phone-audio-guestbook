@@ -108,7 +108,7 @@ Speichere die Änderungen und schließe den Editor.
 
 Neustart oder Netzwerk neustarten:
 
-Starte den Raspberry Pi neu, oder führe den Befehl `sudo systemctl daemon-reload` gefolgt von `sudo systemctl restart wpa_supplicant` aus, um die Änderungen zu aktivieren. 
+Starte den Raspberry Pi neu, oder führe den Befehl "sudo systemctl daemon-reload" gefolgt von "sudo systemctl restart wpa_supplicant" aus, um die Änderungen zu aktivieren. 
 Nun versucht der Raspberry Pi, sich automatisch mit den konfigurierten Netzwerken zu verbinden, beginnend mit dem ersten Netzwerk in der Liste.
 Wenn die Verbindung fehlschlägt, versucht er das nächste Netzwerk usw.
 
