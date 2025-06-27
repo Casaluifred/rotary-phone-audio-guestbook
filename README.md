@@ -75,7 +75,7 @@ Das Audio-Gästebuch ist nun bereit zum Testen/Einsatz! Erweiterte Konfiguration
 
 ### Bei mehreren SSID anmelden
 Da ich mehrere Netzwerke betreibe, möchte ich mich auch an mehreren WLAN anmelden können. Zum Beispiel zu Hause oder (auf der Hochzeit) über den mitgeführten Hotspot.
-Um einen Raspberry Pi Zero W automatisch mit mehreren SSIDs zu verbinden, kann man die Datei `/etc/wpa_supplicant/wpa_supplicant.conf` bearbeiten und mehrere Netzwerke in der Konfiguration definieren. 
+Um einen Raspberry Pi Zero W automatisch mit mehreren SSIDs zu verbinden, kann man die Datei "/etc/wpa_supplicant/wpa_supplicant.conf" bearbeiten und mehrere Netzwerke in der Konfiguration definieren. 
 Der Pi versucht dann, sich der Reihe nach mit den angegebenen Netzwerken zu verbinden, bis eine erfolgreiche Verbindung hergestellt ist.
 Hier ist eine detaillierte Anleitung:
 
