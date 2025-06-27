@@ -86,8 +86,8 @@ sudo nano /etc/wpa_supplicant/wpa_supplicant.conf.
 ```
 
 3. Konfiguration der Netzwerke:
-Fügen Sie für jedes Netzwerk, mit dem sich der Pi verbinden soll, einen Block mit den folgenden Informationen hinzu:
-   ```bash
+Füge für jedes Netzwerk, mit dem sich der Pi verbinden soll, einen Block mit den folgenden Informationen hinzu:
+```bash
 network={
     ssid="SSID_1"
     psk="Passwort_fuer_SSID_1"
@@ -96,7 +96,7 @@ network={
     ssid="SSID_2"
     psk="Passwort_fuer_SSID_2"
 }
-   ```
+```
 
 Ersetze SSID_1, Passwort_fuer_SSID_1, SSID_2 und Passwort_fuer_SSID_2 mit den tatsächlichen Werten für Deine Netzwerke.
 Füge so viele network Blöcke hinzu, wie benötigt werden.
