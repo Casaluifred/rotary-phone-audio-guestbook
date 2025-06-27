@@ -80,15 +80,39 @@ Der Pi versucht dann, sich der Reihe nach mit den angegebenen Netzwerken zu verb
 Hier ist eine detaillierte Anleitung:
 
 1. Zugriff auf die Konfigurationsdatei:
-Öffne die Datei wpa_supplicant.conf mit einem Texteditor, z.B. ```bash sudo nano /etc/wpa_supplicant/wpa_supplicant.conf.```
+Öffne die Datei wpa_supplicant.conf mit einem Texteditor, z.B.
+```bash
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf.
+```
 
-2. Konfiguration der Netzwerke:
+3. Konfiguration der Netzwerke:
 Fügen Sie für jedes Netzwerk, mit dem sich der Pi verbinden soll, einen Block mit den folgenden Informationen hinzu:
    ```bash
-   username: admin
-   password: password
+network={
+    ssid="SSID_1"
+    psk="Passwort_fuer_SSID_1"
+}
+network={
+    ssid="SSID_2"
+    psk="Passwort_fuer_SSID_2"
+}
    ```
 
+Ersetze SSID_1, Passwort_fuer_SSID_1, SSID_2 und Passwort_fuer_SSID_2 mit den tatsächlichen Werten für Deine Netzwerke.
+Füge so viele network Blöcke hinzu, wie benötigt werden.
+Es ist empfehlenswert, die gewünschte Reihenfolge der Netzwerke durch die Reihenfolge der Blöcke in der Datei zu bestimmen.
+
+Speichern und Schließen:
+
+Speichere die Änderungen und schließe den Editor.
+
+Neustart oder Netzwerk neustarten:
+
+Starte den Raspberry Pi neu, oder führe den Befehl sudo systemctl daemon-reload gefolgt von sudo systemctl restart wpa_supplicant aus, um die Änderungen zu aktivieren. 
+Nun versucht der Raspberry Pi, sich automatisch mit den konfigurierten Netzwerken zu verbinden, beginnend mit dem ersten Netzwerk in der Liste.
+Wenn die Verbindung fehlschlägt, versucht er das nächste Netzwerk usw.
+
+ 
 ## [Software](docs/software.md)
 
 ## [Entwicklung](docs/development.md)
