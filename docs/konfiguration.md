@@ -1,28 +1,28 @@
-# Configuration Guide for Rotary Phone Audio Guestbook
+# Konfigurationshandbuch für das Audio-Gästebuch
 
-This guide explains how to configure your Rotary Phone Audio Guestbook system to work with your specific hardware and customize it for your event.
+In dieser Anleitung wird erläutert, wie das Audio Guestbook-System konfiguriert wird, dass es mit Deiner spezifischen Hardware funktioniert, und wie Du es für Deine Veranstaltung anpassen kannst.
 
-## Initial Setup Checklist
+## Checkliste für die Ersteinrichtung
 
-- [ ] Replace the default greeting with your own custom recording
-- [ ] Set the correct ALSA hardware mapping for your audio interface
-- [ ] Configure the GPIO pins for your phone's hook switch
-- [ ] Test audio playback and recording
-- [ ] Verify the system service is running properly
+- [ ] Lade eine selbsterstellte Begrüßungsmeldung hoch.
+- [ ] Stelle die richtige ALSA-Hardwarezuordnung für Dein Audio-Interface ein
+- [ ] Konfiguriere die GPIO-Pins für Deine Gabelkontakt
+- [ ] Teste Audiowiedergabe und -aufnahme
+- [ ] Überprüfe, ob der Systemdienst ordnungsgemäß ausgeführt wird
 
-## Audio Interface Configuration
+## Audio Interfacekonfiguration
 
 ### ALSA Hardware Mapping
 
-Depending on your audio interface's configuration, you may need to adjust the ALSA settings. First, identify your audio devices by running:
+Abhängig von der Konfiguration Deines Audio-Interfaces musst Du möglicherweise die ALSA-Einstellungen anpassen. Identifiziere zunächst Deine Audiogeräte, indem Du Folgendes ausführst:
 
 ```bash
 aplay -l
 ```
 
-This will list all available sound cards and digital audio devices. Look for your USB audio interface, noting its card and device numbers.
-
-If your audio interface is not being detected correctly, you might need to modify `.asoundrc` in your home directory. For example, if your USB audio interface is listed as card 1, device 0, create or edit `.asoundrc` to include:
+Es werden alle verfügbaren Soundkarten und digitalen Audiogeräte aufgelistet. Suche nach Deinem USB-Audio-Interface und notiere die Karten- und Gerätenummer.
+Wenn Dein Audio-Interface nicht korrekt erkannt wird, musst Du möglicherweise die Datei „.asoundrc“ in Deinem Home-Verzeichnis anpassen. 
+Wenn Dein USB-Audio-Interface beispielsweise als Karte 1, Gerät 0 aufgeführt ist, erstelle oder bearbeite die Datei „.asoundrc“, um Folgendes hinzuzufügen:
 
 ```bash
 pcm.!default {
@@ -36,7 +36,7 @@ ctl.!default {
 }
 ```
 
-### Audio Format Settings
+### Audio Format Einstellungen
 
 In `config.yaml`, you can customize audio format settings:
 
@@ -47,143 +47,144 @@ In `config.yaml`, you can customize audio format settings:
 - `channels`: Number of audio channels (2 for stereo, 1 for mono)
 - `sample_rate`: Recording sample rate in Hz (default is 44100)
 
-## GPIO Configuration
+## GPIO Konfiguration
 
-The Rotary Phone Audio Guestbook uses GPIO pins to detect when the phone handset is lifted or placed down, as well as for optional buttons.
+Das Audio Gäsetbuch verwendet GPIO-Pins, um zu erkennen, wann der Telefonhörer abgehoben oder aufgelegt wird, sowie für optionale Tasten.
 
-### Hook Switch Configuration
+### Gabelkontakt Konfiguration
 
-The hook switch is the most critical configuration element, as it determines when recording starts and stops:
+Der Gabelumschalter ist das wichtigste Konfigurationselement, da er bestimmt, wann die Aufzeichnung beginnt und endet::
 
-- `hook_gpio`: The GPIO pin number connected to the phone's hook switch
-- `hook_type`: Set to "NC" (Normally Closed) or "NO" (Normally Open), depending on your phone's hook switch type
-- `invert_hook`: Set to true if your hook behavior is reversed (recording starts when handset is down instead of up)
-- `hook_bounce_time`: Debounce time in seconds to prevent false triggers (usually 0.1)
+- `hook_gpio`: Die GPIO-Pin-Nummer, die mit dem Gabelumschalter des Telefons verbunden ist
+- `hook_type`: Stelle es auf „NC“ (normalerweise geschlossen) oder „NO“ (normalerweise offen), abhängig vom Gabelumschaltertyp Deines Telefons.
+- `invert_hook`: Auf „true“ setzen, wenn Dein Telefon sich umgekehrt verhält (die Aufnahme beginnt, wenn der Hörer aufgelegt ist, statt abgenommen).)
+- `hook_bounce_time`: Entprellzeit in Sekunden, um Fehlauslösungen zu verhindern (normalerweise 0,1)
 
-For GPIO pin mapping, refer to the wiring diagram specific to your Raspberry Pi model:
+Informationen zur GPIO-Pin-Zuordnung findest Du im Schaltplan Deines Raspberry Pi-Modells.:
 
 ![Raspberry Pi GPIO Pinout](../images/rpi_GPIO.png)
 
-### Understanding Switch Types
+### Grundlegendes zu Schalter-Typen
 
-- **NC (Normally Closed)**: When the handset is on the hook (resting), the circuit is CLOSED. When lifted, the circuit OPENS.
-- **NO (Normally Open)**: When the handset is on the hook (resting), the circuit is OPEN. When lifted, the circuit CLOSES.
+- **NC (Normally Closed)**: Wenn der Hörer aufgelegt ist (ruht), ist der Stromkreis GESCHLOSSEN. Beim Abheben wird der Stromkreis GEÖFFNET.
+- **NO (Normally Open)**: Wenn der Hörer aufgelegt ist (ruht), ist der Stromkreis GEÖFFNET. Beim Abheben wird der Stromkreis GESCHLOSSEN.
 
-Most older rotary phones use NC switches, but some models vary. If you're unsure, you can test with a multimeter or try both settings.
+Die meisten älteren Wählscheibentelefone verwenden NC-Schalter, aber einige Modelle unterscheiden sich. 
+Wenn Du unsicher bist, kannst Du mit einem Multimeter testen oder beide Einstellungen ausprobieren..
 
-### Troubleshooting Hook Configuration
+### Fehlerbehebung bei der Gabel-Konfiguration
 
-If you experience issues with your hook behavior:
+Wenn Du Probleme mit dem Gabel-Verhalten hast:
 
-1. First, identify your switch type (NO or NC):
+1. Identifiziere zunächst den Schaltertyp (NO oder NC).:
 
-   - NC (Normally Closed): The switch completes the circuit when not pressed
-   - NO (Normally Open): The switch completes the circuit when pressed
+   - NC (Normally Closed): Der Schalter schließt den Stromkreis, wenn er nicht gedrückt ist
+   - NO (Normalerweise offen): Der Schalter schließt den Stromkreis, wenn er gedrückt wird
 
-2. Set `hook_type` according to your physical switch type
+2. Stelle den `hook_type` entsprechend dem physischen Schalter-Typ ein
 
-3. If the behavior is still reversed (e.g., recording when handset is down), set `invert_hook: true`
+3. Wenn das Verhalten immer noch umgekehrt ist (z. B. Aufnahme, wenn der Hörer aufgelegt ist), setze `invert_hook: true`
 
-4. If the hook is triggering erratically, increase the `hook_bounce_time` from 0.1 to 0.2 or 0.3 seconds
+4. Wenn der Gabelkontakt unregelmäßig ausgelöst wird, erhöhe die „hook_bounce_time“ von 0,1 auf 0,2 oder 0,3 Sekunden
 
-5. After any configuration change, restart the service: `sudo systemctl restart audioGuestBook.service`
+5. Starte den Dienst nach jeder Konfigurationsänderung neu: `sudo systemctl restart audioGuestBook.service`
 
-### Common Hook Switch Issues
+### Häufige Probleme mit dem Gabelkontakt
 
-- **System not responding to handset lifts**: Check the GPIO pin number and wire connections
-- **Recording starts when handset is down**: Set `invert_hook: true` in config.yaml
-- **Multiple recordings triggered when lifting/placing handset**: Increase `hook_bounce_time` to 0.2 or 0.3
-- **System crashes with rapid hook toggles**: Update to the latest software version which includes race condition handling
+- **System reagiert nicht auf das Abheben des Hörers**: Überprüfe die GPIO-Pin-Nummer und die Kabelverbindungen
+- **Die Aufnahme beginnt, wenn der Hörer aufgelegt wird**: Setze `invert_hook: true` in config.yaml
+- **Mehrere Aufnahmen werden beim Abheben/Auflegen des Hörers ausgelöst**: Erhöhe `hook_bounce_time` auf 0,2 oder 0,3
+- **Systemabstürze bei schnellen Gabelkontakt-Betätigungen**: Update auf die neueste Softwareversion, die Race Condition Handling beinhaltet
 
-### Other GPIO Settings
+### Andere GPIO-Einstellungen
 
-- `record_greeting_gpio`: GPIO pin for the button to record a new greeting (set to 0 to disable)
-- `record_greeting_type`: "NC" or "NO" for the record greeting button
-- `record_greeting_bounce_time`: Debounce time for the greeting button
-- `shutdown_gpio`: GPIO pin for a shutdown button (set to 0 to disable)
-- `shutdown_button_hold_time`: Time in seconds to hold the shutdown button (default is 2)
+- `record_greeting_gpio`: GPIO-Pin für einen Schlater zum Aufzeichnen einer neuen Begrüßung (zum Deaktivieren auf 0 setzen)
+- `record_greeting_type`: „NC“ oder „NO“ für den Schalter „Ansage aufnehmen“
+- `record_greeting_bounce_time`: Entprellzeit für die Begrüßungstaste
+- `shutdown_gpio`: GPIO-Pin für einen Schalter zum Herunterfahren (zum Deaktivieren auf 0 setzen)
+- `shutdown_button_hold_time`: Zeit in Sekunden, die die Ausschalttaste gedrückt gehalten werden muss (Standard ist 2)
 
-## Audio Files Configuration
+## Audiodatei-Konfiguration
 
-### Greeting Message
+### Begrüßungsnachricht
 
-- `greeting`: Path to the greeting audio file
-- `greeting_volume`: Volume level for the greeting (0.0 to 1.0)
-- `greeting_start_delay`: Delay in seconds before playing the greeting
+- `greeting`: Pfad zur Begrüßungs-Audiodatei
+- `greeting_volume`: Lautstärke der Begrüßung (0,0 bis 1,0)
+- `greeting_start_delay`: Verzögerung in Sekunden vor dem Abspielen der Begrüßung
 
-#### Recording a Custom Greeting
+#### Aufzeichnen einer benutzerdefinierten Begrüßung
 
-To record a custom greeting:
+So zeichnest Du eine benutzerdefinierte Begrüßung auf:
 
-1. Connect a microphone to your Raspberry Pi
-2. If you've configured a record_greeting button, press and hold it to record your message
-3. Alternatively, you can record on another device and copy the WAV file to `/home/admin/rotary-phone-audio-guestbook/sounds/greeting.wav`
+1. Schließe ein Mikrofon an den Raspberry Pi an
+2. Wenn Du einen Schalter „Record_greeting“ angeschlossen und konfiguriert hast, halte diesen gedrückt, um Deine Nachricht aufzuzeichnen
+3. Alternativ kann die Begrüßung auf einem anderen Gerät aufgenommen und die WAV-Datei nach `/home/admin/rotary-phone-audio-guestbook/sounds/greeting.wav` kopiert werden.
 
-### Beep Sound
+### Piepton
 
-- `beep`: Path to the beep audio file
-- `beep_volume`: Volume level for the beep
-- `beep_start_delay`: Delay in seconds before playing the beep
-- `beep_include_in_message`: Whether to include the beep in the recorded message (true or false)
+- `beep`: Pfad zur Signalton-Audiodatei
+- `beep_volume`: Lautstärke für den Signalton
+- `beep_start_delay`: Verzögerung in Sekunden vor dem Abspielen des Signaltons
+- `beep_include_in_message`: Ob der Signalton in die aufgezeichnete Nachricht aufgenommen werden soll (true oder false)
 
-### Time Exceeded Message
+### Meldung „Zeit überschritten“
 
-- `time_exceeded`: Path to the time exceeded audio file
-- `time_exceeded_volume`: Volume level for the time exceeded message
+- `time_exceeded`: Pfad zur Audiodatei mit der Zeitüberschreitung
+- `time_exceeded_volume`: Lautstärke der Meldung „Zeitüberschreitung“
 
-## Recording Settings
+## Aufnahmeeinstellungen
 
-- `recordings_path`: Directory where recordings will be saved
-- `recording_limit`: Maximum recording length in seconds
-- `time_exceeded_length`: Time in seconds after which the time exceeded message plays
+- `recordings_path`: Verzeichnis, in dem Aufnahmen gespeichert werden
+- `recording_limit`: Maximale Aufnahmelänge in Sekunden
+- `time_exceeded_length`: Zeit in Sekunden, nach der die Meldung „Zeitüberschreitung“ abgespielt wird
+- 
+## Systemdienst
 
-## System Service
+Der audioGuestBook.service stellt sicher, dass die Anwendung beim Systemstart automatisch ausgeführt wird.
 
-The audioGuestBook.service ensures the application runs automatically at system startup.
-
-You can control the service with these commands:
+Mit diesen Befehlen können Sie den Dienst steuern:
 
 ```bash
-# Start the service
+# Starten des Dienstes
 sudo systemctl start audioGuestBook.service
 
-# Stop the service
+# Beenden Sie den Dienst
 sudo systemctl stop audioGuestBook.service
 
-# Restart the service (after configuration changes)
+# Starten Sie den Dienst neu (nach Konfigurationsänderungen)
 sudo systemctl restart audioGuestBook.service
 
-# Check service status
+# Servicestatus prüfen
 sudo systemctl status audioGuestBook.service
 
-# View service logs
+# Dienstprotokolle anzeigen
 journalctl -u audioGuestBook.service
 ```
 
-### Troubleshooting Service Issues
+### Beheben von Dienstproblemen
 
-If the service fails to start:
+Wenn der Dienst nicht gestartet werden kann:
 
-1. Check the logs for errors:
+1. Überprüfe die Protokolle auf Fehler:
 
    ```bash
    journalctl -u audioGuestBook.service -n 50 --no-pager
    ```
 
-2. Verify config.yaml is correctly formatted:
+2. Überprüfe, ob config.yaml richtig formatiert ist:
 
    ```bash
    cd /home/admin/rotary-phone-audio-guestbook
    python3 -c "import yaml; yaml.safe_load(open('config.yaml'))"
    ```
 
-3. Check permissions on audio devices:
+3. Überprüfe die Berechtigungen für Audiogeräte:
    ```bash
    ls -la /dev/snd/
    sudo usermod -a -G audio admin
    ```
 
-## Complete Config.yaml Example
+## Vollständiges Config.yaml-Beispiel
 
 ```yaml
 alsa_hw_mapping: plughw:1,0
@@ -248,40 +249,41 @@ After making changes to your configuration:
 
 5. Test the phone hook by lifting and replacing the handset
 
-## Web Interface
+## Webinterface
 
-You can also configure your Rotary Phone Audio Guestbook through the web interface, which provides a user-friendly way to modify settings and manage recordings.
+Du kannst das Audio-Gästebuch auch über die Weboberfläche konfigurieren, die eine benutzerfreundliche Möglichkeit bietet, Einstellungen zu ändern und Aufnahmen zu verwalten.
 
-Access the web interface by navigating to your Raspberry Pi's IP address and port 8080 in a web browser: `http://your_raspberry_pi_ip:8080`
+Greife auf die Weboberfläche zu, indem Du in einem Webbrowser die IP-Adresse und der Port 8080 des Raspberry Pi eingibst: `http://your_raspberry_pi_ip:8080`
 
-Changes should be applied automatically through the web interface, if that isn't the case then you can manually restart the systemctl service.
+Änderungen sollten automatisch über die Weboberfläche angewendet werden. Wenn dies nicht der Fall ist, kannst Du den systemctl-Dienst manuell neu starten..
 
-## Performance Optimization
+## Leistungsoptimierung
 
-If you're planning to use the guestbook for a long event, consider these tips:
+Wenn das Gästebuch für eine längere Veranstaltung verwendet werden soll, beachte diese Tipps:
 
-1. **Monitor disk space**: Recordings can accumulate quickly. Check available space with:
+1. **Überwachen des Speicherplatzes**: Aufnahmen können sich schnell ansammeln. Überprüfe den verfügbaren Speicherplatz mit:
 
    ```bash
    df -h
    ```
 
-2. **Enable automatic cleanup**: If disk space is an issue, you can set up a cron job to archive or delete older recordings.
+2. **Automatische Bereinigung aktivieren**: Wenn Speicherplatz ein Problem darstellt, kannst Du einen Cron-Job einrichten, um ältere Aufzeichnungen zu archivieren oder zu löschen.
 
-3. **Cooling**: Ensure proper ventilation for your Raspberry Pi, especially if the event is in a warm environment.
+3. **Kühlung**: Sorge für ausreichende Belüftung des Raspberry Pi, insbesondere wenn die Veranstaltung in einer warmen Umgebung stattfindet.
 
-## Backup and Recovery
+## Sicherung und Wiederherstellung
 
-To backup your recordings:
+Aufnahmen sichern:
 
-1. Use the web interface to download recordings
-2. Or, use `scp` to copy recordings to another computer:
+1. Verwende die Weboberfläche, um Aufzeichnungen herunterzuladen
+2. Oder verwende `scp`, um Aufnahmen auf einen anderen Computer zu kopieren:
 
    ```bash
    scp -r admin@your_raspberry_pi_ip:/home/admin/rotary-phone-audio-guestbook/recordings /path/to/backup
    ```
 
-3. Backup your custom configuration:
+3. Sichern der benutzerdefinierten Konfiguration:
+   
    ```bash
    scp admin@your_raspberry_pi_ip:/home/admin/rotary-phone-audio-guestbook/config.yaml /path/to/backup
    ```
