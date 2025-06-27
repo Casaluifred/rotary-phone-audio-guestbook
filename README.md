@@ -4,9 +4,9 @@ Dieses Projekt verwandelt ein Wählscheibentelefon in einen Sprachrekorder für 
 
 ![image](images/final_result_2.jpg)
 
-- [Rotary Phone Audio Guestbook](#rotary-phone-audio-guestbook)
-  - [Background](#background)
-  - [Material](#materials)
+- [Wählscheibentelefon Audio Gästebuch](#wählscheibentelefon-audio-gästebuch)
+  - [Hintergrund](#hintergrund)
+  - [Material](#material)
   - [Einrichtung](#einrichtung)
     - [Telefon vorbereiten](#telefon-vorbereiten)
     - [Herunterladen und Installieren des spezifischen Raspberry-Images](#herunterladen-und-installieren-des-spezifischen-raspberry-images)
