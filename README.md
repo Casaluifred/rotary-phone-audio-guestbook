@@ -10,7 +10,7 @@ Dieses Projekt verwandelt ein Wählscheibentelefon in einen Sprachrekorder für 
   - [Setup](#setup)
     - [Prepare Your Rotary Phone](#prepare-your-rotary-phone)
     - [Download and Install the Custom Image](#download-and-install-the-custom-image)
-    - [Initial Configuration](#initial-configuration)
+    - [Ersteinrichtung](#ersteinrichjtung)
     - [bei mehreren SSID anmelden](#extend-configuration)
   - [Software](#software)
   - [Development](#development)
@@ -58,7 +58,7 @@ Wenn die Hardware vorbereitet ist, installiere das benutzerdefinierte Raspberry 
 5. Richte Die WLAN-Netzwerkverbindung ein
 6. Stecke die SD-Karte in den Raspberry Pi und verninde ihn mit der Spannungsversorgung.
 
-### Erstkonfiguration
+### Ersteinrichtung
 
 Sobald die Hardware-Einrichtung abgeschlossen und das Image installiert ist:
 
