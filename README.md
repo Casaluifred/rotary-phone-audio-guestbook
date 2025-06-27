@@ -11,6 +11,7 @@ Dieses Projekt verwandelt ein Wählscheibentelefon in einen Sprachrekorder für 
     - [Prepare Your Rotary Phone](#prepare-your-rotary-phone)
     - [Download and Install the Custom Image](#download-and-install-the-custom-image)
     - [Initial Configuration](#initial-configuration)
+    - [bei mehreren SSID anmelden](#extend-configuration)
   - [Software](#software)
   - [Development](#development)
   - [Support](#support)
